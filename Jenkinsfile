@@ -16,6 +16,12 @@ pipeline {
             bat 'venv\\Scripts\\activate && python ETL_VENTAS.py'
             }
         }
+        stage('Archivar: Guardar los Resultados') {
+            steps {
+                // Guarda los archivos generados como "artefactos" del build
+                archiveArtifacts artifacts: '*.png, *.csv', allowEmptyArchive: true
+            }
+        }
     }
 
     post {
