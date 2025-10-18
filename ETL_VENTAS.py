@@ -5,7 +5,7 @@ import seaborn as sns
 from matplotlib.ticker import FuncFormatter
 
 #CARGAR LOS DATOS DESDE EL ARCHIVO CSV
-datos=pd.read_csv("Parcial/data.csv", encoding='utf-8')
+datos=pd.read_csv("data.csv", encoding='utf-8')
 print(datos.head(5))
 print(datos.info())
 print(datos['producto'].value_counts())
@@ -48,7 +48,7 @@ print(data_final.head(5)) #verifico el nuevo orden de columnas
 print("**"*50)
 #CARGAR LOS DATOS TRANSFORMADOS A UN NUEVO ARCHIVO CSV
 print("Guardando los datos transformados en un nuevo archivo CSV...")
-nombre_Archivo="Parcial/data_final.csv"
+nombre_Archivo="data_final.csv"
 data_final.to_csv(nombre_Archivo, index=False, encoding='utf-8')
 print(f"¡Proceso ETL finalizado! 🚀 Tus datos limpios están en '{nombre_Archivo}'.")
 print("**"*50)
@@ -81,7 +81,7 @@ plt.title('Ventas Totales por País')
 plt.xlabel('País')
 plt.ylabel('Ventas Totales ($)')
 plt.tight_layout()
-plt.savefig('Parcial/ventas_por_pais.png')
+plt.savefig('ventas_por_pais.png')
 plt.show()
 
 print("Gráfico para ver la evolución de ventas a lo largo del tiempo:")
@@ -93,7 +93,7 @@ plt.xlabel('Mes')
 plt.ylabel('Ventas Totales ($)')
 plt.legend(title='País')
 plt.tight_layout()
-plt.savefig('Parcial/ventasxmes.png')
+plt.savefig('ventasxmes.png')
 plt.show()
 #usando seaborn para graficos mas avanzados
 print("Gráfico de Top 10 Vendedores por Ingresos Generados:")
@@ -106,8 +106,9 @@ ax.set_xlabel('Ingresos Totales (en $)', fontsize=14)
 ax.set_ylabel('Vendedor', fontsize=14)
 ax.xaxis.set_major_formatter(FuncFormatter(lambda x, _: f'${int(x/1000):,}K'))
 plt.tight_layout()
-plt.savefig('Parcial/top_vendedores.png')
+plt.savefig('top_vendedores.png')
 plt.show()
+
 
 
 
