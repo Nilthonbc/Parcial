@@ -50,7 +50,7 @@ print("**"*50)
 print("Guardando los datos transformados en un nuevo archivo CSV...")
 nombre_Archivo="data_final.csv"
 data_final.to_csv(nombre_Archivo, index=False, encoding='utf-8')
-print(f"¡Proceso ETL finalizado! 🚀 Tus datos limpios están en '{nombre_Archivo}'.")
+print(f"¡Proceso ETL finalizado! Tus datos limpios están en '{nombre_Archivo}'.")
 print("**"*50)
 #ANALISIS DE LOS DATOS
 #Usando funciones de numpy 
@@ -108,6 +108,7 @@ ax.xaxis.set_major_formatter(FuncFormatter(lambda x, _: f'${int(x/1000):,}K'))
 plt.tight_layout()
 plt.savefig('top_vendedores.png')
 plt.show()
+
 
 
 
