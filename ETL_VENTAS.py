@@ -75,6 +75,7 @@ print(f'El total de productos vendidos es: {total_productos_vendidos}')
 print("**"*50)
 #Generación de reportes
 print("Gráfico para visualizar las ventas por pais:")
+plt.figure()
 ventas_por_pais=data_final.groupby('pais')['total'].sum().sort_values(ascending=False)
 ventas_por_pais.plot(kind='bar', color='skyblue')
 plt.title('Ventas Totales por País')
@@ -82,9 +83,10 @@ plt.xlabel('País')
 plt.ylabel('Ventas Totales ($)')
 plt.tight_layout()
 plt.savefig('ventas_por_pais.png')
-plt.show()
+
 
 print("Gráfico para ver la evolución de ventas a lo largo del tiempo:")
+plt.figure()
 data_final['mes']=data_final['fecha'].dt.to_period('M')
 ventasxmes=data_final.groupby(['mes','pais'])['total'].sum().reindex()
 ventasxmes.unstack().plot(kind='line', marker='o')
@@ -94,7 +96,7 @@ plt.ylabel('Ventas Totales ($)')
 plt.legend(title='País')
 plt.tight_layout()
 plt.savefig('ventasxmes.png')
-plt.show()
+
 #usando seaborn para graficos mas avanzados
 print("Gráfico de Top 10 Vendedores por Ingresos Generados:")
 top_vendedores = data_final.groupby('vendedor')['total'].sum().nlargest(10).sort_values(ascending=True)
@@ -107,7 +109,8 @@ ax.set_ylabel('Vendedor', fontsize=14)
 ax.xaxis.set_major_formatter(FuncFormatter(lambda x, _: f'${int(x/1000):,}K'))
 plt.tight_layout()
 plt.savefig('top_vendedores.png')
-plt.show()
+
+
 
 
 
