@@ -26,6 +26,20 @@ pipeline {
 
     post {
         success { echo "✅ Pipeline completado con éxito" }
-        failure { echo "❌ Error en alguna etapa del pipeline" }
+        failure {// --- AÑADE ESTO ---
+        emailext (
+            to: 'niltonbc10@gmail.com', // El correo donde recibirás la alerta
+            subject: "FALLO en el Pipeline: ${env.JOB_NAME} [Build #${env.BUILD_NUMBER}]",
+            body: """<p>La ejecución #${env.BUILD_NUMBER} del pipeline '${env.JOB_NAME}' ha fallado.</p>
+                     <p><b>Estado del Build:</b> ${currentBuild.currentResult}</p>
+                     <p><b>Causa del error:</b> Revisa la salida de la consola para más detalles.</p>
+                     <p><b>Aquí está el enlace directo a la ejecución:</b></br>
+                     <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>"""
+        )
+        // --- FIN DE LA SECCIÓN AÑADIDA --- 
         }
+        always {
+        // Limpia el espacio de trabajo para la siguiente ejecución
+        cleanWs()
+    }
 }
