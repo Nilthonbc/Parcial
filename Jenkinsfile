@@ -10,7 +10,7 @@ pipeline {
                         
                         echo "Aplicando configuración de Terraform..."
                         // Aplica la configuración. Pasa el número de build de Jenkins como una variable a Terraform.
-                        bat 'terraform apply -auto-approve -var="build_number=${env.BUILD_NUMBER}"'
+                        bat "terraform apply -auto-approve -var=\"build_number=${env.BUILD_NUMBER}\""
                     }
                 }
         
