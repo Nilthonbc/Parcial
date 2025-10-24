@@ -110,8 +110,7 @@ ax.xaxis.set_major_formatter(FuncFormatter(lambda x, _: f'${int(x/1000):,}K'))
 plt.tight_layout()
 plt.savefig('top_vendedores.png')
 
-print("Forzando un error para probar la notificacion...")
-esto_es_un_error_intencional
+
 
 
 
