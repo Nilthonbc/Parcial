@@ -1,6 +1,19 @@
 pipeline {
         agent any
 
+        // --- NUEVA ETAPA DE TERRAFORM ---
+        stage('Terraform: Preparar Entorno') {
+            steps {
+                echo "Inicializando Terraform..."
+                // Inicializa Terraform para descargar el provider "local"
+                bat 'terraform init'
+                
+                echo "Aplicando configuración de Terraform..."
+                // Aplica la configuración. Pasa el número de build de Jenkins como una variable a Terraform.
+                bat 'terraform apply -auto-approve -var="build_number=${env.BUILD_NUMBER}"'
+            }
+        }
+        
         stages {
                 stage('Preparar entorno') {
             steps {
