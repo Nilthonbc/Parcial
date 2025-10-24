@@ -19,7 +19,7 @@ variable "build_number" {
 resource "local_file" "pipeline_reporte" {
   
   # Contenido del archivo. Usamos la variable de Jenkins.
-  content  = "Reporte de ejecución del Pipeline ETL. Build de Jenkins: ${var.build_number}"
+  content  = "Reporte de ejecucion del Pipeline ETL. Build de Jenkins: ${var.build_number}"
   # Nombre del archivo que se creará
   filename = "pipeline_reporte.txt"
 }
