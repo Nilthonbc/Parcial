@@ -2,7 +2,7 @@ pipeline {
         agent any
 
         // --- NUEVA ETAPA DE TERRAFORM ---
-        stage('Terraform: Preparar Entorno') {
+        stages('Terraform: Preparar Entorno') {
             steps {
                 echo "Inicializando Terraform..."
                 // Inicializa Terraform para descargar el provider "local"
